@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto</title>
+  <script src="https://kit.fontawesome.com/bdc4e23805.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../CSS/contacto.css">
+</head>
+<body>
+  <!-- Header -->
+  <div class="container-header">
+    <header>
+      <div class="logo">
+        <a href="#">Sebxs AI</a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="../HTML/index.html">Inicio</a></li>
+          <li><a href="../HTML/sobremi.html">Sobre Mí</a></li>
+          <li><a href="../HTML/skills.html">Skills</a></li>
+          <li><a href="../HTML/curriculum.html">Curriculum</a></li>
+          <li><a href="../HTML/portafolio.html">Portafolio</a></li>
+          <li><a href="../HTML/contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Sección Contacto -->
+  <main>
+    <section id="contacto" class="contacto">
+      <h2>Contáctame</h2>
+      <p class="intro">Puedes escribirme a través del formulario o visitarme en mi ubicación.</p>
+
+      <div class="contacto-grid">
+        <!-- Formulario -->
+        <form id="contactForm">
+          <input type="text" placeholder="Tu nombre" required>
+          <input type="email" placeholder="Tu correo" required>
+          <textarea placeholder="Tu mensaje" rows="5" required></textarea>
+          <button type="submit">Enviar Mensaje</button>
+        </form>
+
+        <!-- Mapa -->
+        <div class="mapa">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d996.5882274796212!2d-75.54671028787754!3d2.388195349279703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sco!4v1757613548382!5m2!1ses-419!2sco"
+            allowfullscreen="" 
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#contacto" class="arriba">
+      <i class="fa-solid fa-angles-up"></i>
+    </a>
+    <div class="redes">
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </footer>
+    <div id="notificacion" class="notificacion">¡Sumercé lo ha enviado!</div>
+    <script src="../JS/main.js"></script>
+</body>
+</html>

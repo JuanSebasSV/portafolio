@@ -1,0 +1,1 @@
+{"rule":"PUNTO_EN_ABREVIATURAS","sentence":"^\\QIng Sebas\\E$"}

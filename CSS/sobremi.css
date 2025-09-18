@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
+
+/* 📱 Responsive: dividir el menú en 2 columnas en móviles */
+@media (max-width: 600px) {
+  nav ul {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr; /* dos columnas iguales */
+    gap: 10px; /* espacio entre columnas */
+    text-align: center;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+  }
+
+  main {
+    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
+  }
+
+}
+
+/* 📱💻 Responsive: tablets (pantallas medianas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container-header header ul {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 15px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .container-header header ul li {
+    margin: 5px 0;
+  }
+
+  main {
+    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
+  }
+
+}
+
+
+html, body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+
+main {
+  flex: 1; /* el contenido se expande y empuja el footer hacia abajo */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(to top, rgba(30,35,38,.8), rgba(30,35,38,1)), url(../img/fondo.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Header igual que style.css */
+.container-header {
+  background: black;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
+  left: 0;
+}
+.container-header header {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+.container-header header .logo a {
+  font-family: 'Righteous', cursive;
+  font-size: 36px;
+  color: #1cb698;
+  text-decoration: none;
+}
+.container-header header ul {
+  display: flex;
+  list-style: none;
+}
+.container-header header nav ul li a {
+  text-align: center;
+  color: #fff;
+  margin: 0 15px;
+  padding: 5px 8px;   /* 👈 un poco más de espacio */
+  text-decoration: none;
+  transition: .5s;
+}
+.container-header header nav ul li a:hover {
+  color: #1cb698;
+  background-color: rgba(255, 255, 255, 0.1); /* 👈 fondo gris iluminado */
+  border-radius: 5px; /* 👈 esquinas redondeadas */
+  padding: 5px 8px;   /* 👈 un poco más de espacio */
+}
+
+/* Sobre mi */
+.sobremi {
+  padding: 100px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.sobremi .container-section {
+  max-width: 1100px;
+  margin: auto;
+}
+.sobremi h2 {
+  font-size: 48px;
+  font-family: 'Righteous', cursive;
+  text-align: center;
+  padding: 20px 0;
+}
+.sobremi .container-section p {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.sobremi .container-section p span {
+  color: #1cb698;
+  font-weight: bold;
+}
+.sobremi .fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.sobremi .fila .col {
+  flex: 1;
+  min-width: 300px;
+}
+.sobremi .fila .col h3 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+.sobremi .fila .col ul {
+  list-style: none;
+}
+.sobremi .fila .col ul li {
+  margin: 12px 0;
+}
+.sobremi .fila .col ul strong {
+  display: inline-block;
+  color: #1cb698;
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+}
+.sobremi .fila .col .container-interes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sobremi .fila .col .container-interes .interes {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  margin: 0 15px 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+}
+
+.sobremi .fila .col .container-interes .interes:hover {
+  background-color: #1cb698;
+  color: #fff;
+}
+
+.interes {
+    gap: 8px; /* separa icono y texto */
+}
+
+.sobremi .fila .col .container-interes .interes span {
+  margin-top: 6px; /* separa el texto del icono */
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: auto; /* esto obliga al footer a quedarse abajo */
+}
+footer .redes {
+  margin-bottom: 20px;
+}
+footer .redes a {
+  color: #fff;
+  display: inline-block;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  margin: 10px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+footer .redes a:hover {
+  background: #1cb698;
+  border-color: #1cb698;
+  transform: scale(1.1);
+}
+
+footer .arriba {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #1cb698;
+  color: #fff;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  top: -25px;
+  border-radius: 50%;
+  line-height: 50px;
+  font-size: 18px;
+}
+
+/* Animación de caída con shake */
+/* Animación de caída */
+@keyframes dropDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0.9);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Estado inicial */
+.sobremi .interes {
+  opacity: 0;
+}
+
+/* Cuando se active */
+.sobremi .interes.animate {
+  animation: dropDown 0.9s ease forwards;
+}
+

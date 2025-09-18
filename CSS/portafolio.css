@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
+
+/* 📱 Responsive: dividir el menú en 2 columnas en móviles */
+@media (max-width: 600px) {
+  nav ul {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr; /* dos columnas iguales */
+    gap: 10px; /* espacio entre columnas */
+    text-align: center;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+  }
+
+  main {
+    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
+  }
+
+}
+
+/* 📱💻 Responsive: tablets (pantallas medianas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container-header header ul {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 15px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .container-header header ul li {
+    margin: 5px 0;
+  }
+
+  main {
+    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
+  }
+
+}
+
+html,body{height:100%}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Work Sans',sans-serif}
+body{
+  display:flex;flex-direction:column;min-height:100vh;
+  background:linear-gradient(to top, rgba(30,35,38,.8), rgba(30,35,38,1)), url(../IMG/fondo.jpg);
+  background-size:cover;background-position:center;color:#fff;
+}
+main{flex:1}
+html{scroll-behavior:smooth}
+
+/* Header (igual que tus otros CSS) */
+.container-header{background:black;position:fixed;width:100%;z-index:99;top:0;left:0}
+.container-header header{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
+.container-header header .logo a{font-family:'Righteous',cursive;font-size:36px;color:#1cb698;text-decoration:none}
+.container-header header ul{display:flex;list-style:none}
+.container-header header nav ul li a{text-align:center;color:#fff;margin:0 15px;padding:5px 8px;text-decoration:none;transition:.25s}
+.container-header header nav ul li a:hover{color:#1cb698;background:rgba(255,255,255,.06);border-radius:6px}
+
+/* Portafolio */
+.portafolio{padding:100px 20px}
+.portafolio .container-section{max-width:1100px;margin:auto}
+.portafolio h2{font-size:44px;font-family:'Righteous',cursive;text-align:center;margin-bottom:8px}
+.portafolio .intro{text-align:center;margin-bottom:30px;color:#d7d7d7}
+
+/* Grid de tarjetas sin imagenes */
+.grid-portafolio{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+
+/* tarjeta */
+.proyecto{
+  background:rgba(25,25,25,0.7);
+  border-radius:12px;
+  overflow:hidden;               /* <- importante para evitar "artefactos" */
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
+  transform:translateY(30px);
+  opacity:0;
+  transition:transform .35s ease, box-shadow .35s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+/* top strip con icono */
+.proyecto .card-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:16px 18px;
+  background:linear-gradient(90deg, rgba(28,199,152,0.12), rgba(28,199,152,0.04));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.proyecto .card-top i{font-size:20px;color:#1cb698}
+.proyecto .card-top .role{color:#cfeee6;font-size:13px}
+
+/* body */
+.proyecto .card-body{padding:18px;flex:1;display:flex;flex-direction:column;gap:12px}
+.proyecto h3{font-size:20px;color:#fff;margin:0}
+.proyecto p{color:#d0d0d0;font-size:14px;line-height:1.4;margin:0}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tags span{background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;font-size:12px;color:#ddd}
+
+/* botones */
+.actions{margin-top:auto;display:flex;gap:10px}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;background:#1cb698;color:#01221a;text-decoration:none;font-weight:600;transition:transform .18s ease,box-shadow .18s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(28,199,152,0.12)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+
+/* hover general (sin overlay problem) */
+.proyecto:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.55)}
+
+/* animación de entrada (fadeUp) */
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.proyecto.animate{animation:fadeUp .7s cubic-bezier(.2,.85,.25,1) forwards}
+
+/* responsive tweaks */
+@media (max-width:768px){
+  .container-header header .logo a{font-size:30px}
+  .portafolio h2{font-size:36px}
+  .tags span{font-size:11px;padding:6px}
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: auto; /* esto obliga al footer a quedarse abajo */
+}
+footer .redes {
+  margin-bottom: 20px;
+}
+footer .redes a {
+  color: #fff;
+  display: inline-block;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  margin: 10px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+footer .redes a:hover {
+  background: #1cb698;
+  border-color: #1cb698;
+  transform: scale(1.1);
+}
+
+footer .arriba {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #1cb698;
+  color: #fff;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  top: -25px;
+  border-radius: 50%;
+  line-height: 50px;
+  font-size: 18px;
+}
