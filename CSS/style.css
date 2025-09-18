@@ -1,57 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
 
-/* 📱 Responsive: dividir el menú en 2 columnas en móviles */
-@media (max-width: 600px) {
-  nav ul {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr; /* dos columnas iguales */
-    gap: 10px; /* espacio entre columnas */
-    text-align: center;
-    padding: 0;
-  }
-
-  nav ul li {
-    margin: 5px 0;
-  }
-
-  main {
-    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
-  }  
-
+/* Ocultar el checkbox de forma robusta pero funcional (no usar display:none) */
+#nav-toggle {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  pointer-events: none !important;
 }
 
-/* 📱💻 Responsive: tablets (pantallas medianas) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .container-header header ul {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    column-gap: 15px;
-    row-gap: 10px;
-    text-align: center;
-    padding: 0;
-  }
-
-  .container-header header ul li {
-    margin: 3px 0;
-  }
-
-  main {
-    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
-  }
-
-}
-
-html, body {
-  height: 100%;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Work Sans', sans-serif;
-}
-
+/* Reset y fuentes */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Work Sans', sans-serif; }
+html, body { height: 100%; }
 body {
   margin: 0;
   padding: 0;
@@ -65,12 +36,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+main { flex: 1; }
 
-main {
-  flex: 1;
-}
-
-/* Header */
+/* Header (desktop) */
 .container-header {
   background: black;
   position: fixed;
@@ -101,18 +69,18 @@ main {
   text-align: center;
   color: #fff;
   margin: 0 15px;
-  padding: 5px 8px;   /* 👈 un poco más de espacio */
+  padding: 5px 8px;
   text-decoration: none;
   transition: .5s;
 }
 .container-header header nav ul li a:hover {
   color: #1cb698;
-  background-color: rgba(255, 255, 255, 0.2); /* 👈 fondo gris iluminado */
-  border-radius: 5px; /* 👈 esquinas redondeadas */
-  padding: 5px 8px;   /* 👈 un poco más de espacio */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 5px 8px;
 }
 
-/* Inicio */
+/* Inicio (desktop) */
 .inicio {
   height: 100vh;
   display: flex;
@@ -152,7 +120,7 @@ main {
   margin-top: 20px;
 }
 
-/* Footer */
+/* Footer (desktop) */
 footer {
   margin-top: auto;
   background-color: black;
@@ -162,9 +130,7 @@ footer {
   position: relative;
   width: 100%;
 }
-footer .redes {
-  margin-bottom: 20px;
-}
+footer .redes { margin-bottom: 20px; }
 footer .redes a {
   color: #fff;
   display: inline-block;
@@ -197,50 +163,108 @@ footer .arriba {
   font-size: 18px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .container-header header {
-    flex-direction: column;
-    padding: 10px;
-  }
-  .container-header header nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .container-header header .logo a {
-    font-size: 28px;
-  }
-  .inicio {
-    padding-top: 100px;
-    text-align: center;
-  }
-  .inicio .container-banner {
-    max-width: 90%;
-    padding: 15px;
-  }
-  .inicio .container-banner h1 {
-    font-size: 28px;
-  }
-  .inicio .container-banner h2 {
-    font-size: 14px;
-  }
-  .container-banner .redes {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-}
+/* ==== Control del label hamburguesa: oculto en desktop, visible en móvil ==== */
+.nav-toggle-label { display: none; }
 
-@media (max-width: 480px) {
-  .container-header header .logo a {
-    font-size: 22px;
+/* =========================
+   Bloque responsive único
+   ========================= */
+@media (max-width: 1024px) {
+
+  .container-header header {
+    padding: 12px 18px;
+    align-items: center;
+    position: relative;
   }
-  .inicio .container-banner h1 {
-    font-size: 22px;
+
+  /* mostrar label como botón hamburguesa */
+  .nav-toggle-label {
+    display: flex;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    z-index: 1002;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
   }
-  .inicio .container-banner h2 {
-    font-size: 12px;
+
+  .nav-toggle-label .hamburger,
+  .nav-toggle-label .hamburger::before,
+  .nav-toggle-label .hamburger::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform .28s ease, opacity .28s ease;
+    position: relative;
   }
-  footer {
-    padding: 10px 0;
+  .nav-toggle-label .hamburger::before,
+  .nav-toggle-label .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
   }
+  .nav-toggle-label .hamburger::before { top: -7px; }
+  .nav-toggle-label .hamburger::after { top: 7px; }
+
+  /* ocultar menú horizontal */
+  .container-header header nav ul { display: none; }
+
+  /* overlay menu al abrir */
+  .container-header header .nav ul {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(6,8,10,0.96);
+    padding: 28px 20px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    overflow-y: auto;
+    z-index: 1001;
+  }
+
+  .container-header header .nav ul li { width: 100%; }
+  .container-header header .nav ul li a {
+    display: block;
+    padding: 14px 18px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+  }
+  .container-header header .nav ul li a:hover {
+    background: rgba(255,255,255,0.03);
+    color: #1cb698;
+    border-radius: 8px;
+  }
+
+  /* mostrar overlay cuando se activa el checkbox (input debe existir en DOM) */
+  #nav-toggle:checked ~ .nav ul { display: flex; }
+
+  /* animación hamburguesa a cruz */
+  #nav-toggle:checked + .nav-toggle-label .hamburger { background: transparent; }
+  #nav-toggle:checked + .nav-toggle-label .hamburger::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #nav-toggle:checked + .nav-toggle-label .hamburger::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ajustes visuales para pantallas pequeñas */
+  .inicio { padding-top: 100px; text-align: center; }
+  .inicio .container-banner { max-width: 90%; padding: 15px; }
+  .inicio .container-banner h1 { font-size: 28px; }
+  .inicio .container-banner h2 { font-size: 14px; }
+  footer { padding: 12px 0; }
+  .container-header header .logo a { font-size: 30px; }
 }

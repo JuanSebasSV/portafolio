@@ -1,53 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
 
-/* 📱 Responsive: dividir el menú en 2 columnas en móviles */
-@media (max-width: 600px) {
-  nav ul {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr; /* dos columnas iguales */
-    gap: 10px; /* espacio entre columnas */
-    text-align: center;
-    padding: 0;
-  }
-
-  main {
-    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
-  }
-
-  nav ul li {
-    margin: 5px 0;
-  }
+/* Ocultar el checkbox de forma robusta pero funcional (no usar display:none) */
+#nav-toggle {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  pointer-events: none !important;
 }
 
-
-/* 📱💻 Responsive: tablets (pantallas medianas) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .container-header header ul {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    gap: 15px;
-    text-align: center;
-    padding: 0;
-  }
-
-  .container-header header ul li {
-    margin: 5px 0;
-  }
-
-  main {
-    padding-top: 120px !important; /* 👈 ajusta este valor según la altura de tu header en móviles */
-  }
-
-}
-
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Work Sans', sans-serif;
-}
-
+/* Reset y fuentes */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Work Sans', sans-serif; }
+html, body { height: 100%; }
 body {
   margin: 0;
   padding: 0;
@@ -57,10 +32,13 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: white;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
 }
+main { flex: 1; }
 
-/* Header */
+/* Header (desktop) */
 .container-header {
   background: black;
   position: fixed;
@@ -88,72 +66,88 @@ body {
   list-style: none;
 }
 .container-header header nav ul li a {
+  text-align: center;
   color: #fff;
   margin: 0 15px;
-  padding: 5px 8px;   /* 👈 un poco más de espacio */
+  padding: 5px 8px;
   text-decoration: none;
   transition: .5s;
 }
 .container-header header nav ul li a:hover {
   color: #1cb698;
-  background-color: rgba(255, 255, 255, 0.1); /* 👈 fondo gris iluminado */
-  border-radius: 5px; /* 👈 esquinas redondeadas */
-  padding: 5px 8px;   /* 👈 un poco más de espacio */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 5px 8px;
 }
+
+/* Ocultar label hamburguesa en desktop */
+.nav-toggle-label { display: none; }
 
 /* Contacto */
 .contacto {
-  padding: 100px 20px;
-  min-height: 100vh;
-  max-width: 800px;
-  margin: auto;
+  padding-top: 120px;
+  text-align: center;
 }
 .contacto h2 {
-  font-size: 48px;
-  font-family: 'Righteous', cursive;
-  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.contacto .intro {
+  font-size: 18px;
   margin-bottom: 30px;
+}
+.contacto-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
 }
 .contacto form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background: rgba(0,0,0,0.7);
-  padding: 20px;
-  border-radius: 10px;
 }
-.contacto input, .contacto textarea {
+.contacto input,
+.contacto textarea {
   padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  outline: none;
   font-size: 16px;
 }
+.contacto textarea { resize: vertical; min-height: 150px; }
 .contacto button {
   padding: 12px;
-  border: none;
-  border-radius: 5px;
   background: #1cb698;
-  color: white;
+  border: none;
+  border-radius: 6px;
   font-size: 18px;
+  color: #fff;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background .3s ease;
 }
-.contacto button:hover {
-  background: #159e7a;
+.contacto button:hover { background: #14806a; }
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: none;
+  border-radius: 8px;
 }
 
 /* Footer */
 footer {
+  margin-top: auto;
   background-color: black;
   color: #fff;
   padding: 15px 0;
   text-align: center;
+  position: relative;
   width: 100%;
-  margin-top: auto; /* esto obliga al footer a quedarse abajo */
 }
-footer .redes {
-  margin-bottom: 20px;
-}
+footer .redes { margin-bottom: 20px; }
 footer .redes a {
   color: #fff;
   display: inline-block;
@@ -171,7 +165,6 @@ footer .redes a:hover {
   border-color: #1cb698;
   transform: scale(1.1);
 }
-
 footer .arriba {
   display: block;
   width: 50px;
@@ -187,106 +180,104 @@ footer .arriba {
   font-size: 18px;
 }
 
+/* Responsive único */
+@media (max-width: 1024px) {
 
-.contacto .intro {
-  text-align: center;   /* centra el texto horizontalmente */
-  max-width: 800px;     /* opcional: limitar el ancho para que no quede muy largo */
-  margin: 0 auto 30px;  /* centrado + espacio abajo */
-  font-size: 18px;      /* opcional: un poco más grande */
-  line-height: 1.6;     /* mejora la legibilidad */
-}
+  .container-header header {
+    padding: 12px 18px;
+    align-items: center;
+    position: relative;
+  }
 
+  .nav-toggle-label {
+    display: flex;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    z-index: 1002;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+  }
 
-/* Grid contacto: formulario + mapa */
-.contacto-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(550px, 1fr));
-  gap: 30px;              /* un poquito más de espacio entre columnas */
-  margin: 40px auto;      /* centrado */
-  max-width: none;      /* más ancho en escritorio */
-  max-width: 1100px;
-  width: 100%;
-  justify-content: center;
-  align-items: start;
-}
+  .nav-toggle-label .hamburger,
+  .nav-toggle-label .hamburger::before,
+  .nav-toggle-label .hamburger::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform .28s ease, opacity .28s ease;
+    position: relative;
+  }
+  .nav-toggle-label .hamburger::before,
+  .nav-toggle-label .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+  .nav-toggle-label .hamburger::before { top: -7px; }
+  .nav-toggle-label .hamburger::after { top: 7px; }
 
-.contacto textarea {
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  min-height: 180px; /* 👈 antes estaba pequeño, ahora más alto */
-  resize: vertical;  /* permite agrandar manualmente si quieres */
-}
+  /* ocultar menú horizontal */
+  .container-header header nav ul { display: none; }
 
+  /* overlay menu al abrir */
+  .container-header header .nav ul {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(6,8,10,0.96);
+    padding: 28px 20px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    overflow-y: auto;
+    z-index: 1001;
+  }
 
-.contacto form,
-.contacto .mapa {
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-}
+  .container-header header .nav ul li { width: 100%; }
+  .container-header header .nav ul li a {
+    display: block;
+    padding: 14px 18px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+  }
+  .container-header header .nav ul li a:hover {
+    background: rgba(255,255,255,0.03);
+    color: #1cb698;
+    border-radius: 8px;
+  }
 
-.contacto .mapa {
-  border-radius: 10px;
-  overflow: hidden;
-  min-height: 400px;   /* altura mínima */
-  max-width: none;    /* ancho máximo a voluntad */
-  width: 100%;         /* ocupa toda la columna disponible */
-  margin: 0 auto;      /* centrar si sobra espacio */
-  height: 100%;
-}
+  /* mostrar overlay cuando se activa el checkbox (input debe existir en DOM) */
+  #nav-toggle:checked ~ .nav ul { display: flex; }
 
-.contacto .mapa iframe {
-  width: 100%;
-  height: 100%;
-  display: block;      /* elimina espacios fantasma */
-}
+  /* animación hamburguesa a cruz */
+  #nav-toggle:checked + .nav-toggle-label .hamburger { background: transparent; }
+  #nav-toggle:checked + .nav-toggle-label .hamburger::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #nav-toggle:checked + .nav-toggle-label .hamburger::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
-
-/* 📱 Responsive: en móviles se apila */
-@media (max-width: 600px) {
+  .contacto { padding-top: 100px; }
+  .contacto h2 { font-size: 28px; }
+  .contacto .intro { font-size: 15px; }
   .contacto-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .contacto .mapa {
-    min-height: 300px;
-  }
+  footer { padding: 12px 0; }
+  .container-header header .logo a { font-size: 30px; }
 }
-
-/* 📱💻 Responsive: tablets (pantallas medianas) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .contacto-grid {
-    grid-template-columns: 1fr; /* apilado también en tablet */
-  }
-  .contacto .mapa {
-    min-height: 350px;
-  }
-}
-
-/* Toast bottom-right (mejor animación usando transform) */
-.notificacion {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  transform: translateY(120%); /* fuera de vista */
-  opacity: 0;
-  background: #1cb698;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 700;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  transition: transform .35s cubic-bezier(.2,.9,.2,1), opacity .35s;
-  z-index: 9999;
-  pointer-events: none; /* evita click cuando está oculto */
-}
-
-.notificacion.mostrar {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
