@@ -68,16 +68,15 @@ main { flex: 1; }
 .container-header header nav ul li a {
   text-align: center;
   color: #fff;
-  margin: 0 15px;
-  padding: 5px 8px;
+  padding: 10px 15px;   /* usa padding en vez de margin */
   text-decoration: none;
-  transition: .5s;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 .container-header header nav ul li a:hover {
   color: #1cb698;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
-  padding: 5px 8px;
 }
 
 /* Inicio (desktop) */
@@ -167,9 +166,46 @@ footer .arriba {
 .nav-toggle-label { display: none; }
 
 /* =========================
-   Bloque responsive único
+   Bloque responsive hamburguesa
    ========================= */
 @media (max-width: 1024px) {
+.inicio .container-banner {
+    max-width: 350px !important;
+    padding: 20px !important;
+    border-radius: 40px !important;
+  }
+
+  .container-banner .container-img img {
+    width: 80% !important;
+    margin-top: 40px !important;
+    border-width: 6px !important;
+  }
+
+  .inicio .container-banner h1 {
+    font-size: 30px !important;
+    margin-top: 40px !important;
+  }
+
+  .inicio .container-banner h2 {
+    font-size: 15px !important;
+  }
+
+  .container-header header .nav ul {
+    display: none;
+    position: absolute;
+    top: 68px;       /* justo debajo del header */
+    right: 14px;     /* pegado al botón */
+    background: rgba(0, 0, 0, 0.4);       /* oscuro transparente */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    z-index: 1001;
+    min-width: 200px; /* ancho del rectángulo */
+  }
 
   .container-header header {
     padding: 12px 18px;
@@ -215,23 +251,6 @@ footer .arriba {
 
   /* ocultar menú horizontal */
   .container-header header nav ul { display: none; }
-
-  /* overlay menu al abrir */
-  .container-header header .nav ul {
-    display: none;
-    position: fixed;
-    top: 68px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(6,8,10,0.96);
-    padding: 28px 20px;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    overflow-y: auto;
-    z-index: 1001;
-  }
 
   .container-header header .nav ul li { width: 100%; }
   .container-header header .nav ul li a {

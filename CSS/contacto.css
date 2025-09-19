@@ -68,16 +68,15 @@ main { flex: 1; }
 .container-header header nav ul li a {
   text-align: center;
   color: #fff;
-  margin: 0 15px;
-  padding: 5px 8px;
+  padding: 10px 15px;   /* usa padding en vez de margin */
   text-decoration: none;
-  transition: .5s;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 .container-header header nav ul li a:hover {
   color: #1cb698;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
-  padding: 5px 8px;
 }
 
 /* Ocultar label hamburguesa en desktop */
@@ -182,6 +181,42 @@ footer .arriba {
 
 /* Responsive único */
 @media (max-width: 1024px) {
+  .contacto-grid  {       /* contenedor padre del form y mapa */
+    display: flex !important;
+    flex-direction: column !important;   /* pone todo en columna */
+    align-items: center !important;      /* centra horizontalmente */
+    gap: 20px !important;                /* espacio entre form y mapa */
+  }
+
+  form {
+    width: 100% !important;
+    min-width: 400px !important;   
+    max-width: 400px !important;
+    margin: 0 auto !important;
+  }
+
+  .mapa iframe {
+    width: 100% !important;    /* que ocupe casi todo el ancho */
+    min-width: 400px !important;  
+    max-width: 400px !important;  
+  }
+
+  .container-header header .nav ul {
+    display: none;
+    position: absolute;
+    top: 68px;       /* justo debajo del header */
+    right: 14px;     /* pegado al botón */
+    background: rgba(0, 0, 0, 0.4);       /* oscuro transparente */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    z-index: 1001;
+    min-width: 200px; /* ancho del rectángulo */
+  }
 
   .container-header header {
     padding: 12px 18px;
@@ -189,6 +224,7 @@ footer .arriba {
     position: relative;
   }
 
+  /* mostrar label como botón hamburguesa */
   .nav-toggle-label {
     display: flex;
     position: absolute;
@@ -227,23 +263,6 @@ footer .arriba {
   /* ocultar menú horizontal */
   .container-header header nav ul { display: none; }
 
-  /* overlay menu al abrir */
-  .container-header header .nav ul {
-    display: none;
-    position: fixed;
-    top: 68px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(6,8,10,0.96);
-    padding: 28px 20px;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    overflow-y: auto;
-    z-index: 1001;
-  }
-
   .container-header header .nav ul li { width: 100%; }
   .container-header header .nav ul li a {
     display: block;
@@ -271,13 +290,11 @@ footer .arriba {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  .contacto { padding-top: 100px; }
-  .contacto h2 { font-size: 28px; }
-  .contacto .intro { font-size: 15px; }
-  .contacto-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+  /* ajustes visuales para pantallas pequeñas */
+  .inicio { padding-top: 100px; text-align: center; }
+  .inicio .container-banner { max-width: 90%; padding: 15px; }
+  .inicio .container-banner h1 { font-size: 28px; }
+  .inicio .container-banner h2 { font-size: 14px; }
   footer { padding: 12px 0; }
   .container-header header .logo a { font-size: 30px; }
 }

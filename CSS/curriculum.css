@@ -64,14 +64,14 @@ html { scroll-behavior: smooth; }
 .container-header header nav ul li a {
   text-align: center;
   color: #fff;
-  margin: 0 15px;
-  padding: 5px 8px;
+  padding: 10px 15px;   /* usa padding en vez de margin */
   text-decoration: none;
-  transition: .5s;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 .container-header header nav ul li a:hover {
   color: #1cb698;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 
@@ -178,12 +178,30 @@ footer .arriba {
 
 /* Responsive único: menú hamburguesa y ajustes */
 @media (max-width: 1024px) {
+  .container-header header .nav ul {
+    display: none;
+    position: absolute;
+    top: 68px;       /* justo debajo del header */
+    right: 14px;     /* pegado al botón */
+    background: rgba(0, 0, 0, 0.4);       /* oscuro transparente */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    z-index: 1001;
+    min-width: 200px; /* ancho del rectángulo */
+  }
+
   .container-header header {
     padding: 12px 18px;
     align-items: center;
     position: relative;
   }
 
+  /* mostrar label como botón hamburguesa */
   .nav-toggle-label {
     display: flex;
     position: absolute;
@@ -198,6 +216,7 @@ footer .arriba {
     align-items: center;
     justify-content: center;
   }
+
   .nav-toggle-label .hamburger,
   .nav-toggle-label .hamburger::before,
   .nav-toggle-label .hamburger::after {
@@ -218,23 +237,8 @@ footer .arriba {
   .nav-toggle-label .hamburger::before { top: -7px; }
   .nav-toggle-label .hamburger::after { top: 7px; }
 
+  /* ocultar menú horizontal */
   .container-header header nav ul { display: none; }
-
-  .container-header header .nav ul {
-    display: none;
-    position: fixed;
-    top: 68px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(6,8,10,0.96);
-    padding: 28px 20px;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    overflow-y: auto;
-    z-index: 1001;
-  }
 
   .container-header header .nav ul li { width: 100%; }
   .container-header header .nav ul li a {
@@ -251,7 +255,10 @@ footer .arriba {
     border-radius: 8px;
   }
 
+  /* mostrar overlay cuando se activa el checkbox (input debe existir en DOM) */
   #nav-toggle:checked ~ .nav ul { display: flex; }
+
+  /* animación hamburguesa a cruz */
   #nav-toggle:checked + .nav-toggle-label .hamburger { background: transparent; }
   #nav-toggle:checked + .nav-toggle-label .hamburger::before {
     transform: translateY(7px) rotate(45deg);
@@ -260,6 +267,11 @@ footer .arriba {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  section { margin-top: 100px; }
+  /* ajustes visuales para pantallas pequeñas */
+  .inicio { padding-top: 100px; text-align: center; }
+  .inicio .container-banner { max-width: 90%; padding: 15px; }
+  .inicio .container-banner h1 { font-size: 28px; }
+  .inicio .container-banner h2 { font-size: 14px; }
+  footer { padding: 12px 0; }
   .container-header header .logo a { font-size: 30px; }
 }
